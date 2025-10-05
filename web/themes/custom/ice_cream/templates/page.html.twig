@@ -1,0 +1,41 @@
+{#
+  Template: page.html.twig
+  Description: Basic page template for Ice-Cream theme.
+#}
+
+<!DOCTYPE html>
+<html lang="{{ language.getId() }}">
+  <head>
+    <head-placeholder token="{{ placeholder_token }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
+  </head>
+  <body{{ attributes.addClass('icecream-body') }}>
+    <header class="site-header">
+      <div class="container">
+        {% if logo %}
+          <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="site-logo">
+            <img src="{{ logo }}" alt="{{ 'Home'|t }}">
+          </a>
+        {% endif %}
+
+        {% if site_name %}
+          <h1 class="site-name">{{ site_name }}</h1>
+        {% endif %}
+      </div>
+    </header>
+
+    <main class="site-content container">
+      {{ page.content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {{ "now"|date("Y") }} Ice-Cream Theme. Built with Drupal 11 🍦</p>
+      </div>
+    </footer>
+
+    <js-bottom-placeholder token="{{ placeholder_token }}">
+  </body>
+</html>
